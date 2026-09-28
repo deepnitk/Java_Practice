@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
-
+import java.util.stream.Collectors;
 
 class Employee {
 
@@ -133,6 +133,17 @@ public class Main {
         return res;
     }
 
+    public static Map<String, Double> averageSalaryByDepartment(List<Employee> employees) {
+        return employees.stream()
+            .collect(
+                Collectors.groupingBy(
+                    Employee::getDepartment,
+                    Collectors.averagingDouble(
+                        Employee::getSalary
+                    )
+                )
+            );
+    }
     public static void main(String[] args) {
 
         List<Employee> employees = List.of(
