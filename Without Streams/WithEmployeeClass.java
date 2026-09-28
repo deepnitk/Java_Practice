@@ -119,6 +119,20 @@ public class Main {
         return res;
     }
 
+    public static List<String> getHighEarners(
+        List<Employee> employees) {
+        if (employees == null || employees.isEmpty()) {
+            return List.of();
+        }
+        List<String> res = 
+            employees.stream()
+            .filter(e -> e.getSalary() >= 100000)
+            .map(Employee::getName)
+            .sorted()
+            .toList();
+        return res;
+    }
+
     public static void main(String[] args) {
 
         List<Employee> employees = List.of(
