@@ -144,6 +144,23 @@ public class Main {
                 )
             );
     }
+
+     public static Map<String, Optional<Employee>> highestPaidByDepartmentStream(
+        List<Employee> employees) {
+
+        // your code
+       return 
+            employees.stream()
+            .collect(
+                Collectors.groupingBy(
+                    Employee::getDepartment,
+                    Collectors.maxBy(
+                        Comparator.comparingDouble(Employee::getSalary)
+                    )
+                )
+            );
+        
+    }
     public static void main(String[] args) {
 
         List<Employee> employees = List.of(
